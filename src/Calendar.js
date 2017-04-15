@@ -179,35 +179,38 @@ export default class Calendar extends React.Component {
 		var {selectFrom, selectTo, months} = this;
 
 		if(this.props.WeekSelect) {
-      if(value.getDay() != 1) {
-        if(value.getDay() == 0) {
-          const monday = Moment(value).startOf('isoWeek');
-          selectFrom = new Date(monday);
-          selectTo = value;
-            } else {
-                const monday = Moment(value).startOf('isoWeek');
-                const sunday = Moment(value).day(7);
-                selectFrom = new Date(monday);
-                selectTo = new Date(sunday);
-            }
-        } else {
+          if(value.getDay() != 1) {
+            if(value.getDay() == 0) {
+              const monday = Moment(value).startOf('isoWeek');
+              selectFrom = new Date(monday);
+              selectTo = value;
+            } 
+            else {
+              const monday = Moment(value).startOf('isoWeek');
+              const sunday = Moment(value).day(7);
+              selectFrom = new Date(monday);
+              selectTo = new Date(sunday);
+            }    
+          } 
+          else {
             const sunday = Moment(value).day(7);
             selectFrom = value;
             selectTo = new Date(sunday);
-        }
-		} else {
-      if (!selectFrom) {
-        selectFrom = value;
-      } else if (!selectTo) {
-        if (value > selectFrom) {
-          selectTo = value;
-        } else {
-          selectFrom = value;
-        }
-      } else if (selectFrom && selectTo) {
-        selectFrom = value;
-        selectTo = null;
-      }
+          }
+        } 
+        else {
+            if (!selectFrom) {
+              selectFrom = value;
+            } else if (!selectTo) {
+              if (value > selectFrom) {
+                selectTo = value;
+              } else {
+                selectFrom = value;
+              }
+            } else if (selectFrom && selectTo) {
+              selectFrom = value;
+              selectTo = null;
+            }
 		}
 
 		months = months.map((month) => {
