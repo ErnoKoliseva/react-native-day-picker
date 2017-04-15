@@ -2,13 +2,14 @@
 
 import React, {
 	PropTypes
-}               from 'react';
+} from 'react';
 import {
 	ListView,
 	StyleSheet,
-}               from 'react-native';
+} from 'react-native';
 
-import Month    from './Month';
+import Month  from './Month';
+import Moment from 'moment';
 
 
 export default class Calendar extends React.Component {
@@ -36,14 +37,14 @@ export default class Calendar extends React.Component {
 		dayDisabledBackColor: 'white',
 		dayDisabledTextColor: 'grey',
 
-		daySelectedBackColor: '#4169e1',
+		daySelectedBackColor: '#00B240',
 		daySelectedTextColor: 'white',
 
-		dayInRangeBackColor: '#87cefa',
-		dayInRangeTextColor: 'black',
+		dayInWeekBackColor: '#00B240',
+		dayInWeekTextColor: 'white',
 
 		isFutureDate: false,
-		rangeSelect: true
+		WeekSelect: true
 	};
 
 	static propTypes = {
@@ -76,11 +77,11 @@ export default class Calendar extends React.Component {
 		daySelectedBackColor: PropTypes.string,
 		daySelectedTextColor: PropTypes.string,
 
-		dayInRangeBackColor: PropTypes.string,
-		dayInRangeTextColor: PropTypes.string,
+		dayInWeekBackColor: PropTypes.string,
+		dayInWeekTextColor: PropTypes.string,
 
 		isFutureDate: PropTypes.bool,
-		rangeSelect: PropTypes.bool
+		WeekSelect: PropTypes.bool
 	};
 
 	constructor(props) {
@@ -177,17 +178,39 @@ export default class Calendar extends React.Component {
 	changeSelection(value) {
 		var {selectFrom, selectTo, months} = this;
 
-		if (!selectFrom) {
+		if(this.props.WeekSelect) {
+		  if(value.getDay() != 1) {
+		    if(value.getDay() == 0) {
+		      const monday = Moment(value).startOf('isoWeek');
+		      selectFrom = new Date(monday);
+		      selectTo = value;
+		    } 
+		    else {
+		      const monday = Moment(value).startOf('isoWeek');
+		      const sunday = Moment(value).day(7);
+		      selectFrom = new Date(monday);
+		      selectTo = new Date(sunday);
+		    }    
+		  } 
+		  else {
+		    const sunday = Moment(value).day(7);
+		    selectFrom = value;
+		    selectTo = new Date(sunday);
+		  }
+		} 
+		else {
+		    if (!selectFrom) {
+		      selectFrom = value;
+		    } else if (!selectTo) {
+		      if (value > selectFrom) {
+			selectTo = value;
+		      } else {
 			selectFrom = value;
-		} else if (!selectTo) {
-			if (value > selectFrom) {
-				selectTo = value;
-			} else {
-				selectFrom = value;
-			}
-		} else if (selectFrom && selectTo) {
-			selectFrom = value;
-			selectTo = null;
+		      }
+		    } else if (selectFrom && selectTo) {
+		      selectFrom = value;
+		      selectTo = null;
+		    }
 		}
 
 		months = months.map((month) => {
@@ -200,7 +223,7 @@ export default class Calendar extends React.Component {
 			})
 		});
 
-		if (this.props.rangeSelect) {
+		if (this.props.WeekSelect) {
 			this.selectFrom = selectFrom;
 			this.selectTo = selectTo;
 		} else {
@@ -230,7 +253,7 @@ export default class Calendar extends React.Component {
 		}
 		if (selectFrom && selectTo) {
 			if (selectFrom < date && date < selectTo) {
-				return 'inRange';
+				return 'inWeek';
 			}
 		}
 		return 'common';

@@ -37,9 +37,9 @@ export default class Day extends React.Component {
 				textColor = this.props.daySelectedTextColor;
 				break;
 
-			case 'inRange':
-				backColor = this.props.dayInRangeBackColor;
-				textColor = this.props.dayInRangeTextColor;
+			case 'inWeek':
+				backColor = this.props.dayInWeekBackColor;
+				textColor = this.props.dayInWeekTextColor;
 				break;
 		}
 
