@@ -2,7 +2,7 @@
 
 react-native-day-picker is a simple calendar which allows you to select both days and weeks.
 
-This is a fork from https://github.com/ivanchenko/react-native-day-picker that has been highly modified for custom meeds.
+This is a fork from https://github.com/ivanchenko/react-native-day-picker that has been highly modified for custom needs.
 
 ## Usage
 
