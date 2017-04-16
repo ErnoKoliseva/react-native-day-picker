@@ -94,18 +94,26 @@ All properties are optional
 - **`dayCommonBackColor`** _(string)_ — Not selected day background color.
 
 - **`dayCommonTextColor`** _(string)_ — Not Selected day text color.
+
+- **`dayCommonBorderColor`** _(string)_ — Not selected border color
  
 - **`dayDisabledBackColor`** _(string)_ — Disabled day background color.
 
 - **`dayDisabledTextColor`** _(string)_ — Disabled day text color.
+
+- **`dayDisabledBorderColor`** _(string)_ — Disabled day border color
  
 - **`daySelectedBackColor`** _(string)_ — First and last day in range background color.
 
 - **`daySelectedTextColor`** _(string)_ — First and last day in range text color.
- 
-- **`dayInRangeBackColor`** _(string)_ — In range day background color.
 
-- **`dayInRangeTextColor`** _(string)_ — In range day text color.
+- **`daySelectedBorderColor`** _(string)_ — Selected border color
+ 
+- **`dayInWeekBackColor`** _(string)_ — In week day background color.
+
+- **`dayInWeekTextColor`** _(string)_ — In week day text color.
+
+- **`dayInWeekBorderColor`** _(string)_ — In week border color
 
 - **`monthTextColor`** _(string)_ — Calendar month header text color.
 
