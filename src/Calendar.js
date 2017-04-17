@@ -36,23 +36,23 @@ export default class Calendar extends React.Component {
 
 		dayCommonBackColor: 'white',
 		dayCommonTextColor: 'black',
-					dayCommonBorderColor: 'black',
+		dayCommonBorderColor: 'black',
 
 		dayDisabledBackColor: 'white',
 		dayDisabledTextColor: 'grey',
-					dayDisabldBorderColor: 'grey',
+		dayDisabldBorderColor: 'grey',
 
 		daySelectedBackColor: '#00B240',
 		daySelectedTextColor: 'white',
-					daySelctedBorderColor: '#00B240',
+		daySelctedBorderColor: '#00B240',
 
 		dayInWeekBackColor: '#00B240',
 		dayInWeekTextColor: 'white',
-					dayInWeekBorderColor: '#00B240',
+		dayInWeekBorderColor: '#00B240',
 
-					applicationStartDateBackColor: 'white',
-					applicationStartDateTextColor: 'black',
-					applicationStartDateBorderColor: 'black',
+		applicationStartDateBackColor: 'white',
+		applicationStartDateTextColor: 'black',
+		applicationStartDateBorderColor: 'black',
 
 		isFutureDate: false,
 		WeekSelect: true
@@ -84,11 +84,11 @@ export default class Calendar extends React.Component {
 
 		dayCommonBackColor: PropTypes.string,
 		dayCommonTextColor: PropTypes.string,
-					dayCommonBorderColor: PropTypes.string,
+		dayCommonBorderColor: PropTypes.string,
 
 		dayDisabledBackColor: PropTypes.string,
 		dayDisabledTextColor: PropTypes.string,
-					dayDisabledBorderColor: PropTypes.string,
+		dayDisabledBorderColor: PropTypes.string,
 
 		daySelectedBackColor: PropTypes.string,
 		daySelectedTextColor: PropTypes.string,
@@ -96,11 +96,11 @@ export default class Calendar extends React.Component {
 
 		dayInWeekBackColor: PropTypes.string,
 		dayInWeekTextColor: PropTypes.string,
-					dayInWeekBorderColor: PropTypes.string,
+		dayInWeekBorderColor: PropTypes.string,
 
-					applicationStartDateTextColor: propTypes.string,
-					applicationStartDateBackColor: propTypes.string,
-					applicationStartDateBorderColor: propTypes.string,
+		applicationStartDateTextColor: propTypes.string,
+		applicationStartDateBackColor: propTypes.string,
+		applicationStartDateBorderColor: propTypes.string,
 
 		isFutureDate: PropTypes.bool,
 		WeekSelect: PropTypes.bool
