@@ -39,19 +39,19 @@ export default class Day extends React.Component {
 			case 'common':
 				backColor = this.props.dayCommonBackColor;
 				textColor = this.props.dayCommonTextColor;
-        borderColor = this.props.dayCommonBorderColor;
+        			borderColor = this.props.dayCommonBorderColor;
 				break;
 
 			case 'selected':
 				backColor = this.props.daySelectedBackColor;
 				textColor = this.props.daySelectedTextColor;
-        borderColor = this.props.daySelectedBorderColor;
+        			borderColor = this.props.daySelectedBorderColor;
 				break;
 
 			case 'inWeek':
 				backColor = this.props.dayInWeekBackColor;
 				textColor = this.props.dayInWeekTextColor;
-        borderColor = this.props.dayInWeekBorderColor;
+        			borderColor = this.props.dayInWeekBorderColor;
 				break;
 
 			case 'applicationStartDateInPast':
