@@ -55,7 +55,7 @@ export default class Calendar extends React.Component {
 		applicationStartDateBorderColor: 'black',
 
 		isFutureDate: false,
-		WeekSelect: true
+		weekSelect: true
 	};
 
 	static propTypes = {
@@ -98,12 +98,12 @@ export default class Calendar extends React.Component {
 		dayInWeekTextColor: PropTypes.string,
 		dayInWeekBorderColor: PropTypes.string,
 
-		applicationStartDateTextColor: propTypes.string,
-		applicationStartDateBackColor: propTypes.string,
-		applicationStartDateBorderColor: propTypes.string,
+		applicationStartDateTextColor: PropTypes.string,
+		applicationStartDateBackColor: PropTypes.string,
+		applicationStartDateBorderColor: PropTypes.string,
 
 		isFutureDate: PropTypes.bool,
-		WeekSelect: PropTypes.bool
+		weekSelect: PropTypes.bool
 	};
 
 	constructor(props) {
@@ -202,7 +202,7 @@ export default class Calendar extends React.Component {
 	changeSelection(value) {
 		var {selectFrom, selectTo, months} = this;
 
-		if(this.props.WeekSelect) {
+		if(this.props.weekSelect) {
 						if(value.getDay() != 1) {
 								if(value.getDay() == 0) {
 										const monday = Moment(value).startOf('isoWeek');
@@ -244,7 +244,7 @@ export default class Calendar extends React.Component {
 			})
 		});
 
-		if (this.props.WeekSelect) {
+		if (this.props.weekSelect) {
 			this.selectFrom = selectFrom;
 			this.selectTo = selectTo;
 		} else {
@@ -278,10 +278,8 @@ export default class Calendar extends React.Component {
 				return 'inWeek';
 			}
 		}
-		if (applicationStartDate && currentDate) {
-			if (applicationStartDate <= date && date < currentDate) {
+		if (applicationStartDate <= date && date < currentDate) {
 				return 'applicationStartDateInPast';
-			}
 		}
 		return 'common';
 	}
@@ -296,6 +294,7 @@ export default class Calendar extends React.Component {
 			}
 		}
 
+        console.log(this.props);
 		return (
 			<ListView
 				initialListSize={5}
