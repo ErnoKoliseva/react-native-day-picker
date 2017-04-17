@@ -4,6 +4,8 @@ react-native-day-picker is a simple calendar which allows you to select both day
 
 This is a fork from https://github.com/ivanchenko/react-native-day-picker that has been highly modified for custom needs.
 
+![Demo gif](https://github.com/ErnoKoliseva/react-native-day-picker/blob/master/day-picker.gif?raw=true)
+
 ## Usage
 
 ```javascript
