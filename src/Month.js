@@ -30,7 +30,6 @@ export default class Month extends React.Component {
 		return (
 			<View style={[style, {width: width, backgroundColor: bodyBackColor}]}>
 				<Text style={[styles.monthHeader, {color: monthTextColor || bodyTextColor}]}>
-					{monthHeader}
 				</Text>
 				<View style={styles.monthDays}>
 					{this.weekDaysLocale.map((dayName, i) => {
