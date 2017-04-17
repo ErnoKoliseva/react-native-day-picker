@@ -13,9 +13,17 @@ export default class Day extends React.Component {
 		let onPress, textColor, backColor, borderColor;
 
 		if (disabled) {
-			status = 'disabled';
-			onPress = null;
-		} else {
+			if (status !== 'applicationStartDateInPast') {
+				status = 'disabled';
+				onPress = null;
+			}
+			if (status === 'applicationStartDateInPast') {
+				status = 'applicationStartDateInPast';
+				onPress = null;
+			}
+
+		}
+		else {
 			onPress = () => {
 				onDayPress(date);
 			}
