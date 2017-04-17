@@ -19,6 +19,9 @@ export default class Calendar extends React.Component {
 		onSelectionChange: () => {
 		},
 
+		currentDate: new Date(),
+		applicationStartDate: new Date,
+
 		monthsLocale: ['January', 'February', 'March', 'April', 'May', 'June',
 			'July', 'August', 'September', 'October', 'November', 'December'],
 		weekDaysLocale: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -33,19 +36,23 @@ export default class Calendar extends React.Component {
 
 		dayCommonBackColor: 'white',
 		dayCommonTextColor: 'black',
-        	dayCommonBorderColor: 'black',
+		dayCommonBorderColor: 'black',
 
 		dayDisabledBackColor: 'white',
 		dayDisabledTextColor: 'grey',
-        	dayDisabldBorderColor: 'grey',
+		dayDisabldBorderColor: 'grey',
 
 		daySelectedBackColor: '#00B240',
 		daySelectedTextColor: 'white',
-        	daySelctedBorderColor: '#00B240',
+		daySelctedBorderColor: '#00B240',
 
 		dayInWeekBackColor: '#00B240',
 		dayInWeekTextColor: 'white',
-        	dayInWeekBorderColor: '#00B240',
+		dayInWeekBorderColor: '#00B240',
+
+		applicationStartDateBackColor: 'white',
+		applicationStartDateTextColor: 'black',
+		applicationStartDateBorderColor: 'black',
 
 		isFutureDate: false,
 		WeekSelect: true
@@ -57,6 +64,9 @@ export default class Calendar extends React.Component {
 
 		monthsCount: PropTypes.number,
 		startDate: PropTypes.instanceOf(Date),
+
+		currentDate: PropTypes.instanceOf(Date),
+		applicationStartDate: PropTypes.instanceOf(Date),
 
 		monthsLocale: PropTypes.arrayOf(PropTypes.string),
 		weekDaysLocale: PropTypes.arrayOf(PropTypes.string),
@@ -74,19 +84,23 @@ export default class Calendar extends React.Component {
 
 		dayCommonBackColor: PropTypes.string,
 		dayCommonTextColor: PropTypes.string,
-       	 	dayCommonBorderColor: PropTypes.string,
+		dayCommonBorderColor: PropTypes.string,
 
 		dayDisabledBackColor: PropTypes.string,
 		dayDisabledTextColor: PropTypes.string,
-        	dayDisabledBorderColor: PropTypes.string,
+		dayDisabledBorderColor: PropTypes.string,
 
 		daySelectedBackColor: PropTypes.string,
 		daySelectedTextColor: PropTypes.string,
-        	daySelectedBorderColor: PropTypes.string,
+		daySelectedBorderColor: PropTypes.string,
 
 		dayInWeekBackColor: PropTypes.string,
 		dayInWeekTextColor: PropTypes.string,
-        	dayInWeekBorderColor: PropTypes.string,
+		dayInWeekBorderColor: PropTypes.string,
+
+		applicationStartDateTextColor: propTypes.string,
+		applicationStartDateBackColor: propTypes.string,
+		applicationStartDateBorderColor: propTypes.string,
 
 		isFutureDate: PropTypes.bool,
 		WeekSelect: PropTypes.bool
@@ -98,11 +112,13 @@ export default class Calendar extends React.Component {
 		this.changeSelection = this.changeSelection.bind(this);
 		this.generateMonths = this.generateMonths.bind(this);
 
-		let {selectFrom, selectTo, monthsCount, startDate} = this.props;
+		let {selectFrom, selectTo, monthsCount, startDate, currentDate, applicationStartDate} = this.props;
 
 		this.selectFrom = selectFrom;
 		this.selectTo = selectTo;
 		this.months = this.generateMonths(monthsCount, startDate);
+		this.currentDate = currentDate;
+		this.applicationStartDate = applicationStartDate;
 
 		var dataSource = new ListView.DataSource({rowHasChanged: this.rowHasChanged});
 
@@ -187,38 +203,35 @@ export default class Calendar extends React.Component {
 		var {selectFrom, selectTo, months} = this;
 
 		if(this.props.WeekSelect) {
-		  if(value.getDay() != 1) {
-		    if(value.getDay() == 0) {
-		      const monday = Moment(value).startOf('isoWeek');
-		      selectFrom = new Date(monday);
-		      selectTo = value;
-		    } 
-		    else {
-		      const monday = Moment(value).startOf('isoWeek');
-		      const sunday = Moment(value).day(7);
-		      selectFrom = new Date(monday);
-		      selectTo = new Date(sunday);
-		    }    
-		  } 
-		  else {
-		    const sunday = Moment(value).day(7);
-		    selectFrom = value;
-		    selectTo = new Date(sunday);
-		  }
-		} 
-		else {
-		    if (!selectFrom) {
-		      selectFrom = value;
-		    } else if (!selectTo) {
-		      if (value > selectFrom) {
-			selectTo = value;
-		      } else {
-			selectFrom = value;
-		      }
-		    } else if (selectFrom && selectTo) {
-		      selectFrom = value;
-		      selectTo = null;
-		    }
+						if(value.getDay() != 1) {
+								if(value.getDay() == 0) {
+										const monday = Moment(value).startOf('isoWeek');
+										selectFrom = new Date(monday);
+										selectTo = value;
+								} else {
+										const monday = Moment(value).startOf('isoWeek');
+										const sunday = Moment(value).day(7);
+										selectFrom = new Date(monday);
+										selectTo = new Date(sunday);
+								}
+						} else {
+								const sunday = Moment(value).day(7);
+								selectFrom = value;
+								selectTo = new Date(sunday);
+						}
+		} else {
+						if (!selectFrom) {
+								selectFrom = value;
+						} else if (!selectTo) {
+								if (value > selectFrom) {
+										selectTo = value;
+								} else {
+										selectFrom = value;
+								}
+						} else if (selectFrom && selectTo) {
+								selectFrom = value;
+								selectTo = null;
+						}
 		}
 
 		months = months.map((month) => {
@@ -249,6 +262,7 @@ export default class Calendar extends React.Component {
 	}
 
 	getStatus(date, selectFrom, selectTo) {
+		var { applicationStartDate, currentDate } = this;
 		if (selectFrom) {
 			if (selectFrom.toDateString() === date.toDateString()) {
 				return 'selected';
@@ -262,6 +276,11 @@ export default class Calendar extends React.Component {
 		if (selectFrom && selectTo) {
 			if (selectFrom < date && date < selectTo) {
 				return 'inWeek';
+			}
+		}
+		if (applicationStartDate && currentDate) {
+			if (applicationStartDate <= date && date < currentDate) {
+				return 'applicationStartDateInPast';
 			}
 		}
 		return 'common';
