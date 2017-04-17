@@ -33,7 +33,7 @@ export default class Day extends React.Component {
 			case 'disabled':
 				backColor = this.props.dayDisabledBackColor;
 				textColor = this.props.dayDisabledTextColor;
-        borderColor = this.props.dayDisabldBorderColor;
+        			borderColor = this.props.dayDisabldBorderColor;
 				break;
 
 			case 'common':
