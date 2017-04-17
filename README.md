@@ -64,6 +64,10 @@ All properties are optional
 
 - **`startDate`** _(Date)_ — Date from which you can select dates. By default is **new Date()**.
 
+- **`currentDate`** _(Date)_ — Static property for current date **.
+
+- **`applicationStartDate`** _(Date)_ — Needed a property for a day that might or might not be in past but looks visually different than normal disabled days. **new Date()**.
+
 - **`width`** _(number)_ Calendars width, should be **divided on 7 without remainder** or may cause unpredictable behaviour.
 
 - **`selectFrom`** _(Date)_ — First day in range that will be selected from start.
