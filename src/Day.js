@@ -53,6 +53,12 @@ export default class Day extends React.Component {
 				textColor = this.props.dayInWeekTextColor;
                 		borderColor = this.props.dayInWeekBorderColor;
 				break;
+
+			case 'applicationStartDateInPast':
+				backColor = this.props.applicationStartDateInPastBackColor;
+				textColor = this.props.applicationStartDateInPastTextColor;
+				borderColor = this.props.applicationStartDateInPastBorderColor;
+				break;
 		}
 
 		return (

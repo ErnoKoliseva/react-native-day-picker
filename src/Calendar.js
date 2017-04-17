@@ -50,6 +50,10 @@ export default class Calendar extends React.Component {
 		dayInWeekTextColor: 'white',
 					dayInWeekBorderColor: '#00B240',
 
+					applicationStartDateBackColor: 'white',
+					applicationStartDateTextColor: 'black',
+					applicationStartDateBorderColor: 'black',
+
 		isFutureDate: false,
 		WeekSelect: true
 	};
@@ -93,6 +97,10 @@ export default class Calendar extends React.Component {
 		dayInWeekBackColor: PropTypes.string,
 		dayInWeekTextColor: PropTypes.string,
 					dayInWeekBorderColor: PropTypes.string,
+
+					applicationStartDateTextColor: propTypes.string,
+					applicationStartDateBackColor: propTypes.string,
+					applicationStartDateBorderColor: propTypes.string,
 
 		isFutureDate: PropTypes.bool,
 		WeekSelect: PropTypes.bool
