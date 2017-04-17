@@ -119,4 +119,4 @@ All properties are optional
 
 ## Support
 
-Email vlm.ivanchenko@gmail.com for support.
+Email erno@ernokoliseva.net for support.
