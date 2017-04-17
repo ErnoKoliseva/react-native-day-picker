@@ -1,19 +1,8 @@
 # react-native-day-picker
 
-react-native-day-picker is a simple calendar which allows you select date range. 
-Suites for android and ios. 
- 
-![Demo gif](https://github.com/ivanchenko/react-native-day-picker/blob/master/example-day-picker.gif?raw=true)
+react-native-day-picker is a simple calendar which allows you to select both days and weeks.
 
-## Getting Started
-
-```sh
-$ npm install react-native-day-picker --save
-```
-
-> **Important:** When you build app in release mode, calendar works smooth without any lags.
-
-> **Note:** If you use react-native v0.24 or lower install version 1.0.0 
+This is a fork from https://github.com/ivanchenko/react-native-day-picker that has been highly modified for custom needs.
 
 ## Usage
 
@@ -91,7 +80,7 @@ All properties are optional
 
 - **`isFutureDate`** _(boolean)_ — True if you want to select a future date. By default is **false**.=======
 
-- **`rangeSelect`** _(bool)_ — True if you want to select a range of dates. By default is true.
+- **`weekSelect`** _(bool)_ — True if you want to select weeks, false if you want to select single dates.
 
 
 ### Colors
@@ -105,21 +94,29 @@ All properties are optional
 - **`dayCommonBackColor`** _(string)_ — Not selected day background color.
 
 - **`dayCommonTextColor`** _(string)_ — Not Selected day text color.
+
+- **`dayCommonBorderColor`** _(string)_ — Not selected border color
  
 - **`dayDisabledBackColor`** _(string)_ — Disabled day background color.
 
 - **`dayDisabledTextColor`** _(string)_ — Disabled day text color.
+
+- **`dayDisabledBorderColor`** _(string)_ — Disabled day border color
  
 - **`daySelectedBackColor`** _(string)_ — First and last day in range background color.
 
 - **`daySelectedTextColor`** _(string)_ — First and last day in range text color.
- 
-- **`dayInRangeBackColor`** _(string)_ — In range day background color.
 
-- **`dayInRangeTextColor`** _(string)_ — In range day text color.
+- **`daySelectedBorderColor`** _(string)_ — Selected border color
+ 
+- **`dayInWeekBackColor`** _(string)_ — In week day background color.
+
+- **`dayInWeekTextColor`** _(string)_ — In week day text color.
+
+- **`dayInWeekBorderColor`** _(string)_ — In week border color
 
 - **`monthTextColor`** _(string)_ — Calendar month header text color.
 
 ## Support
 
-Email vlm.ivanchenko@gmail.com for support.
+Email erno@ernokoliseva.net for support.

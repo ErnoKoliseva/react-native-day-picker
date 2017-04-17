@@ -10,7 +10,7 @@ import {
 export default class Day extends React.Component {
 	render() {
 		let {date, status, disabled, onDayPress, width} = this.props;
-		let onPress, textColor, backColor;
+		let onPress, textColor, backColor, borderColor;
 
 		if (disabled) {
 			status = 'disabled';
@@ -25,28 +25,32 @@ export default class Day extends React.Component {
 			case 'disabled':
 				backColor = this.props.dayDisabledBackColor;
 				textColor = this.props.dayDisabledTextColor;
+                		borderColor = this.props.dayDisabldBorderColor;
 				break;
 
 			case 'common':
 				backColor = this.props.dayCommonBackColor;
 				textColor = this.props.dayCommonTextColor;
+                		borderColor = this.props.dayCommonBorderColor;
 				break;
 
 			case 'selected':
 				backColor = this.props.daySelectedBackColor;
 				textColor = this.props.daySelectedTextColor;
+                		borderColor = this.props.daySelectedBorderColor;
 				break;
 
 			case 'inWeek':
 				backColor = this.props.dayInWeekBackColor;
 				textColor = this.props.dayInWeekTextColor;
+                		borderColor = this.props.dayInWeekBorderColor;
 				break;
 		}
 
 		return (
 			<TouchableOpacity
 				activeOpacity={disabled ? 1 : 0.5}
-				style={[styles.common, {backgroundColor: backColor, width: width / 7, height: width / 7}]}
+				style={[styles.common, {backgroundColor: backColor, borderColor: borderColor, borderWidth: 1, width: width / 7, height: width / 7}]}
 				onPress={onPress}>
 				<Text style={{color: textColor}}>{date.getDate()}</Text>
 			</TouchableOpacity>
