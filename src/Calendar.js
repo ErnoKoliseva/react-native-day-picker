@@ -92,7 +92,7 @@ export default class Calendar extends React.Component {
 
 		daySelectedBackColor: PropTypes.string,
 		daySelectedTextColor: PropTypes.string,
-					daySelectedBorderColor: PropTypes.string,
+		daySelectedBorderColor: PropTypes.string,
 
 		dayInWeekBackColor: PropTypes.string,
 		dayInWeekTextColor: PropTypes.string,
@@ -324,4 +324,3 @@ const styles = StyleSheet.create({
 	},
 	month: {}
 });
-
