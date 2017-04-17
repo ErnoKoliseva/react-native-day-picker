@@ -98,9 +98,9 @@ export default class Calendar extends React.Component {
 		dayInWeekTextColor: PropTypes.string,
 		dayInWeekBorderColor: PropTypes.string,
 
-		applicationStartDateTextColor: propTypes.string,
-		applicationStartDateBackColor: propTypes.string,
-		applicationStartDateBorderColor: propTypes.string,
+		applicationStartDateTextColor: PropTypes.string,
+		applicationStartDateBackColor: PropTypes.string,
+		applicationStartDateBorderColor: PropTypes.string,
 
 		isFutureDate: PropTypes.bool,
 		WeekSelect: PropTypes.bool
