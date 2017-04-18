@@ -12,7 +12,7 @@ export default class Day extends React.Component {
 		let { date, days, status, disabled, onDayPress, width, monthsLocale } = this.props;
 		let onPress, textColor, backColor, borderColor;
       
-		var monthHeader = monthsLocale[days[15].date.getMonth()];
+		var monthHeader = monthsLocale[date.getMonth()];
 
 		function getFirstDate(date) {
 		  var n = date.getDate();
